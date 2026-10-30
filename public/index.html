@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <title>AM Generator — Dashboard</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="AM Generator beranda">
+        <span class="brand-mark">AM</span>
+        <span><strong>AM Generator</strong><small>CONTROL PANEL</small></span>
+      </a>
+      <div class="nav-label">MENU UTAMA</div>
+      <a class="nav-item active" href="#overview"><span>▦</span> Dashboard</a>
+      <a class="nav-item" href="#results"><span>≡</span> Hasil proses</a>
+      <div class="sidebar-note">
+        <span class="pulse"></span>
+        <div><strong>Mode aman</strong><small>API demo lokal</small></div>
+      </div>
+      <p class="sidebar-foot">AM Generator <span>v1.0.0</span></p>
+    </aside>
+
+    <main class="main" id="overview">
+      <header class="topbar">
+        <div><p class="eyebrow">WORKSPACE / OVERVIEW</p><h1>Dashboard</h1></div>
+        <div class="top-status"><span class="status-dot" id="statusDot"></span><span id="statusText">Memeriksa layanan…</span></div>
+      </header>
+
+      <section class="welcome">
+        <div class="welcome-copy">
+          <p class="eyebrow light">PANEL KONTROL</p>
+          <h2>Kelola prosesmu<br><span>dalam satu tempat.</span></h2>
+          <p>Pantau status backend dan lihat hasil proses melalui dashboard sederhana.</p>
+        </div>
+        <div class="orb orb-one"></div><div class="orb orb-two"></div>
+        <div class="welcome-symbol">AM<span>✦</span></div>
+      </section>
+
+      <section class="stats" aria-label="Ringkasan">
+        <article class="stat-card"><div class="stat-top"><span>Total diminta</span><span class="stat-icon purple">↗</span></div><strong id="totalRequested">0</strong><small>Jumlah proses yang diminta</small></article>
+        <article class="stat-card"><div class="stat-top"><span>Berhasil</span><span class="stat-icon green">✓</span></div><strong id="totalSuccess">0</strong><small>Hasil sukses dari API</small></article>
+        <article class="stat-card"><div class="stat-top"><span>Gagal</span><span class="stat-icon red">!</span></div><strong id="totalFailed">0</strong><small>Proses yang gagal</small></article>
+      </section>
+
+      <section class="content-grid">
+        <article class="panel run-panel">
+          <div class="panel-heading"><div><h3>Jalankan proses</h3><p>Atur jumlah dan mulai permintaan ke backend.</p></div><span class="pill">API</span></div>
+          <form id="processForm">
+            <label for="count">Jumlah proses</label>
+            <div class="input-wrap"><input id="count" name="count" type="number" min="1" max="10" value="1" required><span>1–10 proses</span></div>
+            <p class="helper">Batas demo: maksimal 10 proses per permintaan.</p>
+            <button id="runButton" class="primary-button" type="submit"><span>▶</span> Mulai proses</button>
+            <p id="formMessage" class="form-message" role="status"></p>
+          </form>
+          <div class="safe-note"><span>ⓘ</span><p>Mode demo hanya menampilkan data contoh. Tidak ada akun atau email pihak ketiga yang dibuat.</p></div>
+        </article>
+
+        <article class="panel service-panel">
+          <div class="panel-heading"><div><h3>Status layanan</h3><p>Koneksi ke backend dashboard.</p></div><button id="refreshStatus" class="icon-button" aria-label="Periksa status lagi">↻</button></div>
+          <div class="service-status"><span class="service-icon">⌘</span><div><strong id="serviceName">AM Generator API</strong><small id="serviceDescription">Menunggu status…</small></div><span id="serviceBadge" class="badge neutral">Memeriksa</span></div>
+          <div class="detail-row"><span>Mode</span><strong id="serviceMode">—</strong></div>
+          <div class="detail-row"><span>Endpoint status</span><code>/api/status</code></div>
+          <div class="detail-row"><span>Pembaruan terakhir</span><strong id="lastChecked">—</strong></div>
+        </article>
+      </section>
+
+      <section class="panel results-panel" id="results">
+        <div class="panel-heading results-heading"><div><h3>Hasil proses</h3><p>Respons terbaru dari backend.</p></div><button id="clearResults" class="secondary-button" type="button">Bersihkan tampilan</button></div>
+        <div class="table-wrap">
+          <table><thead><tr><th>ID</th><th>Status</th><th>Pesan</th><th>Waktu</th></tr></thead>
+          <tbody id="resultsBody"><tr class="empty-row"><td colspan="4"><span class="empty-icon">≡</span><strong>Belum ada hasil</strong><small>Mulai proses untuk melihat respons di sini.</small></td></tr></tbody></table>
+        </div>
+        <div class="results-footer"><span id="resultCount">0 item</span><button id="exportResults" class="text-button" type="button">↓ Ekspor JSON</button></div>
+      </section>
+      <footer>AM Generator Dashboard <span>•</span> Dibuat untuk layanan yang kamu berwenang kelola.</footer>
+    </main>
+  </div>
+  <script src="/app.js"></script>
+</body>
+</html>

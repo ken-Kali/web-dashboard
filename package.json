@@ -1,0 +1,9 @@
+{
+  "name": "am-generator-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Responsive dashboard with a safe, configurable backend API stub",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=18" },
+  "dependencies": { "express": "^4.21.2" }
+}
